@@ -21,7 +21,7 @@ class Breadcrumbs < Middleman::Extension
   def breadcrumbs(page, separator: @separator, wrapper: @wrapper)
     hierarchy = [page]
     hierarchy.unshift hierarchy.first.parent while hierarchy.first.parent
-    hierarchy.collect {|page| wrap link_to(page.data.title, "/#{page.path}"), wrapper: wrapper }.join(h separator)
+    hierarchy.collect { |x| wrap link_to(x.data.title, "/#{x.url}"), wrapper: wrapper }.join(h separator)
   end
 
   private
